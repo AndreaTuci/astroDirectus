@@ -1,0 +1,3 @@
+POSTGRES_USER=directus
+POSTGRES_PASSWORD=directus
+POSTGRES_DB=directus

@@ -1,0 +1,6 @@
+.git
+postgres-data
+static
+media
+.DS_Store
+dist

@@ -1,0 +1,71 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:1.21.6
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/develop/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - astro
+    networks:
+      - app-net
+  database:
+    image: postgis/postgis:13-master
+    # Required when running on platform other than amd64, like Apple M1/M2:
+    # platform: linux/amd64
+    volumes:
+      - ./data/database:/var/lib/postgresql/data
+
+    networks:
+      - app-net   
+
+    env_file:
+      - ./docker/develop/envs/db.env
+
+  cache:
+    image: redis:6
+
+    networks:
+      - app-net 
+
+  directus:
+    image: directus/directus:10.7.0
+    ports:
+      - 8055:8055
+    volumes:
+      - ./uploads:/directus/uploads
+      # If you want to load extensions from the host
+      # - ./extensions:/directus/extensions
+    depends_on:
+      - cache
+      - database
+
+    networks:
+      - app-net  
+
+    env_file:
+      - ./docker/develop/envs/directus.env
+
+  astro:
+    volumes:
+      - ./app:/app/
+      - /app/node_modules
+    networks:
+      - app-net
+    depends_on:
+      - database
+    env_file:
+      - ./docker/develop/envs/astro.env
+      - ./docker/develop/envs/db.env
+    build:
+      dockerfile: ./docker/develop/astro.Dockerfile
+
+    
+
+
+networks:
+    app-net:
+        driver: bridge
