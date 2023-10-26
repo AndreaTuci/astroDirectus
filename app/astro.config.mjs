@@ -16,12 +16,12 @@ export default defineConfig({
   adapter: node({
     mode: "standalone",
   }),
-  vite: {
-    server: {
-      hmr: {
-        clientPort: 4321,
-        protocol: "ws",
-      },
-    },
-  },
+  // vite: {
+  //   server: {
+  //     hmr: {
+  //       clientPort: 4321,
+  //       protocol: "ws",
+  //     },
+  //   },
+  // },
 });
