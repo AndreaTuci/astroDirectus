@@ -1,20 +1,8 @@
-# Astro Starter Kit: Basics
 
-```sh
-npm create astro@latest -- --template basics
-```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+# 🚀 Project Structure
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+Inside of this Astro project, you'll see the following folders and files:
 
 ```text
 /
@@ -22,11 +10,15 @@ Inside of your Astro project, you'll see the following folders and files:
 │   └── favicon.svg
 ├── src/
 │   ├── components/
-│   │   └── Card.astro
+│   ├── i18n/
+│   │   └── ui.ts
+│   │   └── utils.ts
 │   ├── layouts/
 │   │   └── Layout.astro
 │   └── pages/
-│       └── index.astro
+│   |   └── index.astro
+│   └── stores/
+│   │   └── store.ts
 └── package.json
 ```
 
@@ -49,6 +41,27 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+
+## Configuration
+atro.config.mjs defines the configuration for an Astro project. It includes various integrations such as Vue, React, Storyblok, Tailwind, and Node. It also loads environment variables from a .env file using the `loadEnv` function.
+
+### Inputs
+- `defineConfig`: A function that defines the Astro configuration.
+- `vue`, `react`, `storyblok`, `tailwind`, `node`: Astro integrations for Vue, React, Storyblok, Tailwind, and Node respectively.
+- `loadEnv`: A function that loads environment variables from a .env file.
+- `env.STORYBLOK_TOKEN`: The Storyblok access token loaded from the environment variables.
+___
+### Flow
+1. The code imports the necessary modules and functions.
+2. The `loadEnv` function is used to load the environment variables from the .env file.
+3. The `defineConfig` function is called to define the Astro configuration.
+4. Various integrations are added to the `integrations` array, including Vue, React, Storyblok, and Tailwind.
+5. The Storyblok integration is configured with the access token and component mappings.
+6. The Astro output is set to "server".
+7. The Node adapter is configured with the mode set to "standalone".
+8. The Astro configuration is exported.
+___
+
 ## 👀 Want to learn more?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Feel free to check [Astro documentation](https://docs.astro.build) or jump into the [Discord server](https://astro.build/chat).

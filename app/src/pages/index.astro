@@ -1,6 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Card from '../components/astro/Card.astro';
+import Example from "../components/vue/Example.vue"
+
+// Language support
+// import { getLangFromUrl, useTranslations } from '../i18n/utils';
+// const lang = getLangFromUrl(Astro.url);
+// const t = useTranslations(lang);
 ---
 
 <Layout title="Welcome to Astro.">
@@ -54,11 +60,10 @@ import Card from '../components/Card.astro';
 				title="Themes"
 				body="Explore a galaxy of community-built starter themes."
 			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
+			<Example client:only="vue">
+				
+				
+			  </Example>
 		</ul>
 	</main>
 </Layout>

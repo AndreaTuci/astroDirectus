@@ -10,6 +10,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^3.3.3"
+    "@astrojs/node": "^6.0.1",
+    "@astrojs/vue": "^3.0.0",
+    "@nanostores/logger": "^0.2.3",
+    "@nanostores/persistent": "^0.9.1",
+    "@nanostores/vue": "^0.10.0",
+    "astro": "^3.2.0",
+    "nanostores": "^0.9.3",
+    "vite": "4.4.11",
+    "vue": "^3.3.4"
   }
 }
